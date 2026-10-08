@@ -1,0 +1,88 @@
+%% Auto-generated deterministic Mermaid flow for simplicio-loop-quality (simplicio.flow/v1)
+flowchart TD
+    classDef inputStyle fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1;
+    classDef stepStyle fill:#f8fafc,stroke:#64748b,stroke-width:1.5px,color:#0f172a;
+    classDef storeStyle fill:#fef3c7,stroke:#d97706,stroke-width:1.5px,color:#92400e;
+    classDef outputStyle fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#15803d;
+
+    subgraph Inputs ["Entradas"]
+        in_cli["CLI: simplicio-loop-quality (doctor, plan, run, gate, agents)"]:::inputStyle
+        in_evidence_receipts["Execution Receipts: Raw test runner and agent evidence"]:::inputStyle
+        in_policy["Quality Policy: Strict Default & Lane Thresholds"]:::inputStyle
+        in_provider["Loop Extension Entrypoint: native provider runtime"]:::inputStyle
+        in_repo_sources["Repository Sources: Target workspace and test files"]:::inputStyle
+    end
+
+    subgraph Steps ["Processamento e Quality Gates (36 Lanes)"]
+        step_asolaria_quorum["ASOLARIA Tri-Vantage Quorum Ledger Evaluator"]:::stepStyle
+        step_concurrency_perf["Concurrency Reliability & Performance Latency Gates"]:::stepStyle
+        step_evidence_audit["Independent Evidence Auditor (Admissibility & Freshness)"]:::stepStyle
+        step_fast_conformance["Fast Python/Rust Conformance & Shadow Drift Verifier"]:::stepStyle
+        step_mutation_testing["Mutation Testing & Kill Operator Verification"]:::stepStyle
+        step_negotiation["Extension Handshake & Atomic Loop Capability Negotiation"]:::stepStyle
+        step_property_fuzz["Property-Based & Seeded Fuzzing Quality Lane"]:::stepStyle
+        step_quality_gate["Fail-Closed Quality Gate Decision Oracle"]:::stepStyle
+        step_quality_planner["36-Lane Quality Plan Compiler & Applicability Matrix"]:::stepStyle
+        step_release_candidate["Reproducible Release Candidate Verification & Attestation"]:::stepStyle
+        step_remediation_findings["Structured Remediation Findings & Recovery Plan"]:::stepStyle
+        step_risk_selection["Impact Analysis & Risk-Based Monotonic Lane Selection"]:::stepStyle
+        step_stage_graph["Fan-In Deterministic Quality Stage Graph Compilation"]:::stepStyle
+        step_static_quality["Static Quality & Multi-Linter Tool Analysis"]:::stepStyle
+        step_supply_chain["Supply Chain, Lockfile Digests & SBOM Validation"]:::stepStyle
+        step_system_e2e["System & User-Visible End-to-End Scenarios"]:::stepStyle
+        step_unit_testing["Unit & Component Quality Lane Planning and Normalization"]:::stepStyle
+        step_waivers_evaluation["Independent Scoped Waiver Selector & Expired Checks"]:::stepStyle
+    end
+
+    subgraph Stores ["Armazenamento, Contratos e Ledger"]
+        store_contracts[("Canonical Contract Schemas & Strict Policies")]:::storeStyle
+        store_journal_events[("Immutable Quality Event Journal & Ledger Store")]:::storeStyle
+    end
+
+    subgraph Outputs ["Saídas e Vereditos"]
+        out_asolaria_receipt["ASOLARIA Tri-Vantage Quorum Receipt"]:::outputStyle
+        out_evidence_manifest["Immutable Quality Evidence Manifest & Receipts"]:::outputStyle
+        out_gate_verdict["Fail-Closed Quality Gate Verdict (quality-evidence.json)"]:::outputStyle
+        out_quality_plan["Quality Task Plan (quality-task.md / JSON)"]:::outputStyle
+        out_rc_bundle["Signed Release Candidate Bundle & Provenance"]:::outputStyle
+        out_remediation_report["Structured Remediation Findings Report for Loop Recovery"]:::outputStyle
+    end
+
+    %% Conexões determinísticas
+    in_cli -->|"command request"| step_quality_planner
+    in_evidence_receipts -->|"raw receipts"| step_evidence_audit
+    in_policy -->|"policy thresholds"| step_quality_planner
+    in_provider -->|"handshake"| step_negotiation
+    in_repo_sources -->|"scan workspace"| step_quality_planner
+    step_asolaria_quorum -->|"3-perspective quorum"| out_asolaria_receipt
+    step_concurrency_perf -->|"metrics receipts"| step_evidence_audit
+    step_evidence_audit -->|"audited evidence"| step_asolaria_quorum
+    step_evidence_audit -->|"admissible receipts"| step_quality_gate
+    step_fast_conformance -->|"engine parity"| step_evidence_audit
+    step_mutation_testing -->|"mutation kills"| step_evidence_audit
+    step_property_fuzz -->|"fuzz results"| step_evidence_audit
+    step_quality_gate -->|"evidence manifest"| out_evidence_manifest
+    step_quality_gate -->|"gate verdict (PASS/BLOCKED)"| out_gate_verdict
+    step_quality_gate -->|"passed candidate"| step_release_candidate
+    step_quality_gate -->|"blocked defects"| step_remediation_findings
+    step_quality_gate -->|"append event"| store_journal_events
+    step_quality_planner -->|"emit plan"| out_quality_plan
+    step_quality_planner -->|"planned lanes"| step_risk_selection
+    step_release_candidate -->|"attested provenance"| out_rc_bundle
+    step_remediation_findings -->|"recovery plan"| out_remediation_report
+    step_risk_selection -->|"selected suites"| step_stage_graph
+    step_stage_graph -->|"perf & reliability"| step_concurrency_perf
+    step_stage_graph -->|"conformance stage"| step_fast_conformance
+    step_stage_graph -->|"mutation stage"| step_mutation_testing
+    step_stage_graph -->|"fuzz stage"| step_property_fuzz
+    step_stage_graph -->|"static stage"| step_static_quality
+    step_stage_graph -->|"supply chain stage"| step_supply_chain
+    step_stage_graph -->|"e2e stage"| step_system_e2e
+    step_stage_graph -->|"unit stage"| step_unit_testing
+    step_static_quality -->|"static findings"| step_evidence_audit
+    step_supply_chain -->|"sbom digests"| step_evidence_audit
+    step_system_e2e -->|"scenario traces"| step_evidence_audit
+    step_unit_testing -->|"unit evidence"| step_evidence_audit
+    step_waivers_evaluation -->|"approved waivers"| step_quality_gate
+    store_contracts -->|"contract matrix"| step_negotiation
+    store_contracts -->|"strict policy schema"| step_quality_gate

@@ -43,6 +43,43 @@ class AsolariaQuorumTest(unittest.TestCase):
         self.assertEqual(result["status"], "BLOCKED")
         self.assertIn("EVIDENCE_STALE", result["reason_codes"])
 
+    def test_seats_edge_cases(self):
+        bad_seats = {
+            "executor": "not-a-mapping",
+            "verifier": {
+                "agent_address": "",
+                "context_hash": "",
+                "prompt_hash": "",
+                "seed": "",
+                "source_sha": "wrong",
+                "policy_hash": "wrong",
+                "evidence_refs": ["ref"],
+                "criteria_refs": [],
+                "timed_out": True,
+            },
+            "auditor": {
+                "agent_address": "auditor",
+                "context_hash": "ctx",
+                "prompt_hash": "prompt",
+                "seed": "seed",
+                "source_sha": "source",
+                "policy_hash": "policy",
+                "evidence_refs": ["ref"],
+                "criteria_refs": ["AC-1"],
+            },
+            "clean_control": False,
+        }
+        result = evaluate_quorum(["AC-1"], bad_seats, source_sha="source", policy_hash="policy")
+        self.assertEqual(result["status"], "FAIL")
+        self.assertIn("EXECUTOR_MISSING", result["reason_codes"])
+        self.assertIn("VERIFIER_IDENTITY_INCOMPLETE", result["reason_codes"])
+        self.assertIn("SOURCE_BINDING_MISMATCH", result["reason_codes"])
+        self.assertIn("POLICY_BINDING_MISMATCH", result["reason_codes"])
+        self.assertIn("VERIFIER_TRACEABILITY_INCOMPLETE", result["reason_codes"])
+        self.assertIn("SEAT_TIMEOUT", result["reason_codes"])
+        self.assertIn("CLEAN_CONTROL_MISSING", result["reason_codes"])
+
+
 
 if __name__ == "__main__":
     unittest.main()

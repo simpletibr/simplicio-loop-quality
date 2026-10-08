@@ -12,6 +12,13 @@ class InstallSmokeTest(unittest.TestCase):
         result = normalize_install_smoke(return_code=1, stdout="", stderr="missing dependency")
         self.assertEqual(result["status"], "FAIL")
 
+    def test_to_dict(self):
+        plan = build_install_smoke_plan(".")
+        d = plan.to_dict()
+        self.assertEqual(d["schema"], "simplicio.quality-install-smoke/v1")
+        self.assertIn("commands", d)
+
+
 
 if __name__ == "__main__":
     unittest.main()

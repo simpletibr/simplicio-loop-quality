@@ -10,7 +10,11 @@ from dataclasses import dataclass
 from types import MappingProxyType
 from typing import Any, Protocol
 
-from simplicio_loop.hub_queue_agent import HubQueueAgentError
+try:
+    from simplicio_loop.hub_queue_agent import HubQueueAgentError
+except ImportError:
+    class HubQueueAgentError(RuntimeError):  # type: ignore[no-redef]
+        reason_code: str = ""
 from simplicio_loop.process_supervisor import PROCESS_RESULT_SCHEMA, ProcessSpec
 
 from .adapters import ResourceRequest, build_process_spec

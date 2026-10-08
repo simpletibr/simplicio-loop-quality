@@ -15,6 +15,16 @@ class SwiftAdapterTest(unittest.TestCase):
     def test_invalid_status_blocks(self):
         self.assertEqual(normalize_swift_report({"status": "green"})["status"], "BLOCKED")
 
+    def test_to_dict_and_quality_adapter(self):
+        from simplicio_loop_quality.swift_adapters import SwiftQualityAdapter
+        plan = plan_swift_adapter(["Package.swift"])
+        d = plan.to_dict()
+        self.assertEqual(d["schema"], "simplicio.quality-swift-adapter/v1")
+        adapter = SwiftQualityAdapter()
+        planned = adapter.plan({"files": ["Package.swift"]})
+        self.assertEqual(planned.status, "PLANNED")
+
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,1402 @@
+{
+  "name": "simplicio-loop-quality",
+  "description": "Fluxo declarativo end-to-end do simplicio-loop-quality: entrada -> passos -> saídas",
+  "data": {
+    "nodes": [
+      {
+        "id": "in_cli",
+        "type": "genericNode",
+        "position": {
+          "x": 50,
+          "y": 50
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "in_cli",
+          "node": {
+            "display_name": "CLI: simplicio-loop-quality (doctor, plan, run, gate, agents)",
+            "description": "Source: src/simplicio_loop_quality/cli.py:335",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "input"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/cli.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 335
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def main"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "in_evidence_receipts",
+        "type": "genericNode",
+        "position": {
+          "x": 50,
+          "y": 190
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "in_evidence_receipts",
+          "node": {
+            "display_name": "Execution Receipts: Raw test runner and agent evidence",
+            "description": "Source: src/simplicio_loop_quality/evidence.py:350",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "input"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/evidence.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 350
+              },
+              "symbol": {
+                "type": "str",
+                "value": "class EvidenceStore"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "in_policy",
+        "type": "genericNode",
+        "position": {
+          "x": 50,
+          "y": 330
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "in_policy",
+          "node": {
+            "display_name": "Quality Policy: Strict Default & Lane Thresholds",
+            "description": "Source: src/simplicio_loop_quality/policy.py:360",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "input"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/policy.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 360
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def load_policy"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "in_provider",
+        "type": "genericNode",
+        "position": {
+          "x": 50,
+          "y": 470
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "in_provider",
+          "node": {
+            "display_name": "Loop Extension Entrypoint: native provider runtime",
+            "description": "Source: src/simplicio_loop_quality/provider.py:68",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "input"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/provider.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 68
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def provider"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "in_repo_sources",
+        "type": "genericNode",
+        "position": {
+          "x": 50,
+          "y": 610
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "in_repo_sources",
+          "node": {
+            "display_name": "Repository Sources: Target workspace and test files",
+            "description": "Source: src/simplicio_loop_quality/quality_planner.py:31",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "input"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/quality_planner.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 31
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def compile_quality_plan"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "out_asolaria_receipt",
+        "type": "genericNode",
+        "position": {
+          "x": 1350,
+          "y": 50
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "out_asolaria_receipt",
+          "node": {
+            "display_name": "ASOLARIA Tri-Vantage Quorum Receipt",
+            "description": "Source: src/simplicio_loop_quality/asolaria_quorum.py:12",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "output"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/asolaria_quorum.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 12
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def evaluate_quorum"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "out_evidence_manifest",
+        "type": "genericNode",
+        "position": {
+          "x": 1350,
+          "y": 190
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "out_evidence_manifest",
+          "node": {
+            "display_name": "Immutable Quality Evidence Manifest & Receipts",
+            "description": "Source: src/simplicio_loop_quality/evidence.py:350",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "output"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/evidence.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 350
+              },
+              "symbol": {
+                "type": "str",
+                "value": "class EvidenceStore"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "out_gate_verdict",
+        "type": "genericNode",
+        "position": {
+          "x": 1350,
+          "y": 330
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "out_gate_verdict",
+          "node": {
+            "display_name": "Fail-Closed Quality Gate Verdict (quality-evidence.json)",
+            "description": "Source: src/simplicio_loop_quality/cli.py:257",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "output"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/cli.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 257
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def cmd_gate"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "out_quality_plan",
+        "type": "genericNode",
+        "position": {
+          "x": 1350,
+          "y": 470
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "out_quality_plan",
+          "node": {
+            "display_name": "Quality Task Plan (quality-task.md / JSON)",
+            "description": "Source: src/simplicio_loop_quality/cli.py:208",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "output"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/cli.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 208
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def cmd_plan"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "out_rc_bundle",
+        "type": "genericNode",
+        "position": {
+          "x": 1350,
+          "y": 610
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "out_rc_bundle",
+          "node": {
+            "display_name": "Signed Release Candidate Bundle & Provenance",
+            "description": "Source: src/simplicio_loop_quality/release_candidate.py:19",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "output"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/release_candidate.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 19
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def evaluate_release_candidate"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "out_remediation_report",
+        "type": "genericNode",
+        "position": {
+          "x": 1350,
+          "y": 750
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "out_remediation_report",
+          "node": {
+            "display_name": "Structured Remediation Findings Report for Loop Recovery",
+            "description": "Source: src/simplicio_loop_quality/remediation.py:32",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "output"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/remediation.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 32
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def normalize_findings"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "step_asolaria_quorum",
+        "type": "genericNode",
+        "position": {
+          "x": 450,
+          "y": 50
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "step_asolaria_quorum",
+          "node": {
+            "display_name": "ASOLARIA Tri-Vantage Quorum Ledger Evaluator",
+            "description": "Source: src/simplicio_loop_quality/asolaria_quorum.py:12",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "step"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/asolaria_quorum.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 12
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def evaluate_quorum"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "step_concurrency_perf",
+        "type": "genericNode",
+        "position": {
+          "x": 450,
+          "y": 190
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "step_concurrency_perf",
+          "node": {
+            "display_name": "Concurrency Reliability & Performance Latency Gates",
+            "description": "Source: src/simplicio_loop_quality/concurrency_reliability.py:26",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "step"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/concurrency_reliability.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 26
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def plan_concurrency"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "step_evidence_audit",
+        "type": "genericNode",
+        "position": {
+          "x": 450,
+          "y": 330
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "step_evidence_audit",
+          "node": {
+            "display_name": "Independent Evidence Auditor (Admissibility & Freshness)",
+            "description": "Source: src/simplicio_loop_quality/evidence_audit.py:52",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "step"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/evidence_audit.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 52
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def audit_evidence"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "step_fast_conformance",
+        "type": "genericNode",
+        "position": {
+          "x": 450,
+          "y": 470
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "step_fast_conformance",
+          "node": {
+            "display_name": "Fast Python/Rust Conformance & Shadow Drift Verifier",
+            "description": "Source: src/simplicio_loop_quality/fast_conformance.py:40",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "step"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/fast_conformance.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 40
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def evaluate_conformance"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "step_mutation_testing",
+        "type": "genericNode",
+        "position": {
+          "x": 450,
+          "y": 610
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "step_mutation_testing",
+          "node": {
+            "display_name": "Mutation Testing & Kill Operator Verification",
+            "description": "Source: src/simplicio_loop_quality/mutation_quality.py:51",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "step"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/mutation_quality.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 51
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def plan_mutation"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "step_negotiation",
+        "type": "genericNode",
+        "position": {
+          "x": 450,
+          "y": 750
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "step_negotiation",
+          "node": {
+            "display_name": "Extension Handshake & Atomic Loop Capability Negotiation",
+            "description": "Source: src/simplicio_loop_quality/loop_negotiation.py:41",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "step"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/loop_negotiation.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 41
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def negotiate_loop"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "step_property_fuzz",
+        "type": "genericNode",
+        "position": {
+          "x": 450,
+          "y": 890
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "step_property_fuzz",
+          "node": {
+            "display_name": "Property-Based & Seeded Fuzzing Quality Lane",
+            "description": "Source: src/simplicio_loop_quality/property_fuzz.py:28",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "step"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/property_fuzz.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 28
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def plan_fuzz"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "step_quality_gate",
+        "type": "genericNode",
+        "position": {
+          "x": 450,
+          "y": 1030
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "step_quality_gate",
+          "node": {
+            "display_name": "Fail-Closed Quality Gate Decision Oracle",
+            "description": "Source: src/simplicio_loop_quality/gate.py:301",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "step"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/gate.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 301
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def evaluate_receipt"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "step_quality_planner",
+        "type": "genericNode",
+        "position": {
+          "x": 450,
+          "y": 1170
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "step_quality_planner",
+          "node": {
+            "display_name": "36-Lane Quality Plan Compiler & Applicability Matrix",
+            "description": "Source: src/simplicio_loop_quality/quality_planner.py:31",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "step"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/quality_planner.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 31
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def compile_quality_plan"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "step_release_candidate",
+        "type": "genericNode",
+        "position": {
+          "x": 450,
+          "y": 1310
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "step_release_candidate",
+          "node": {
+            "display_name": "Reproducible Release Candidate Verification & Attestation",
+            "description": "Source: src/simplicio_loop_quality/release_candidate.py:19",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "step"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/release_candidate.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 19
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def evaluate_release_candidate"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "step_remediation_findings",
+        "type": "genericNode",
+        "position": {
+          "x": 450,
+          "y": 1450
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "step_remediation_findings",
+          "node": {
+            "display_name": "Structured Remediation Findings & Recovery Plan",
+            "description": "Source: src/simplicio_loop_quality/remediation.py:32",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "step"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/remediation.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 32
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def normalize_findings"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "step_risk_selection",
+        "type": "genericNode",
+        "position": {
+          "x": 450,
+          "y": 1590
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "step_risk_selection",
+          "node": {
+            "display_name": "Impact Analysis & Risk-Based Monotonic Lane Selection",
+            "description": "Source: src/simplicio_loop_quality/risk_selection.py:101",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "step"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/risk_selection.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 101
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def assess_risk"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "step_stage_graph",
+        "type": "genericNode",
+        "position": {
+          "x": 450,
+          "y": 1730
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "step_stage_graph",
+          "node": {
+            "display_name": "Fan-In Deterministic Quality Stage Graph Compilation",
+            "description": "Source: src/simplicio_loop_quality/stage_graph.py:29",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "step"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/stage_graph.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 29
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def compile_stage_graph"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "step_static_quality",
+        "type": "genericNode",
+        "position": {
+          "x": 450,
+          "y": 1870
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "step_static_quality",
+          "node": {
+            "display_name": "Static Quality & Multi-Linter Tool Analysis",
+            "description": "Source: src/simplicio_loop_quality/static_quality.py:90",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "step"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/static_quality.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 90
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def plan_static_quality"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "step_supply_chain",
+        "type": "genericNode",
+        "position": {
+          "x": 450,
+          "y": 2010
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "step_supply_chain",
+          "node": {
+            "display_name": "Supply Chain, Lockfile Digests & SBOM Validation",
+            "description": "Source: src/simplicio_loop_quality/supply_chain.py:16",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "step"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/supply_chain.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 16
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def plan_supply_chain"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "step_system_e2e",
+        "type": "genericNode",
+        "position": {
+          "x": 450,
+          "y": 2150
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "step_system_e2e",
+          "node": {
+            "display_name": "System & User-Visible End-to-End Scenarios",
+            "description": "Source: src/simplicio_loop_quality/system_e2e.py:26",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "step"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/system_e2e.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 26
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def plan_system_e2e"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "step_unit_testing",
+        "type": "genericNode",
+        "position": {
+          "x": 450,
+          "y": 2290
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "step_unit_testing",
+          "node": {
+            "display_name": "Unit & Component Quality Lane Planning and Normalization",
+            "description": "Source: src/simplicio_loop_quality/unit_quality.py:85",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "step"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/unit_quality.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 85
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def plan_unit_tests"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "step_waivers_evaluation",
+        "type": "genericNode",
+        "position": {
+          "x": 450,
+          "y": 2430
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "step_waivers_evaluation",
+          "node": {
+            "display_name": "Independent Scoped Waiver Selector & Expired Checks",
+            "description": "Source: src/simplicio_loop_quality/waivers.py:58",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "step"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/waivers.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 58
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def evaluate_waiver"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "store_contracts",
+        "type": "genericNode",
+        "position": {
+          "x": 950,
+          "y": 50
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "store_contracts",
+          "node": {
+            "display_name": "Canonical Contract Schemas & Strict Policies",
+            "description": "Source: src/simplicio_loop_quality/contract_validation.py:21",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "store"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/contract_validation.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 21
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def validate_contract_document"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "store_journal_events",
+        "type": "genericNode",
+        "position": {
+          "x": 950,
+          "y": 190
+        },
+        "data": {
+          "type": "CustomComponent",
+          "id": "store_journal_events",
+          "node": {
+            "display_name": "Immutable Quality Event Journal & Ledger Store",
+            "description": "Source: src/simplicio_loop_quality/journal_events.py:13",
+            "template": {
+              "kind": {
+                "type": "str",
+                "value": "store"
+              },
+              "file": {
+                "type": "str",
+                "value": "src/simplicio_loop_quality/journal_events.py"
+              },
+              "line": {
+                "type": "int",
+                "value": 13
+              },
+              "symbol": {
+                "type": "str",
+                "value": "def event_key"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge_0_in_cli_step_quality_planner",
+        "source": "in_cli",
+        "target": "step_quality_planner",
+        "data": {
+          "label": "command request",
+          "evidence": "src/simplicio_loop_quality/cli.py:335"
+        }
+      },
+      {
+        "id": "edge_1_in_evidence_receipts_step_evidence_audit",
+        "source": "in_evidence_receipts",
+        "target": "step_evidence_audit",
+        "data": {
+          "label": "raw receipts",
+          "evidence": "src/simplicio_loop_quality/evidence.py:350"
+        }
+      },
+      {
+        "id": "edge_2_in_policy_step_quality_planner",
+        "source": "in_policy",
+        "target": "step_quality_planner",
+        "data": {
+          "label": "policy thresholds",
+          "evidence": "src/simplicio_loop_quality/policy.py:360"
+        }
+      },
+      {
+        "id": "edge_3_in_provider_step_negotiation",
+        "source": "in_provider",
+        "target": "step_negotiation",
+        "data": {
+          "label": "handshake",
+          "evidence": "src/simplicio_loop_quality/loop_negotiation.py:41"
+        }
+      },
+      {
+        "id": "edge_4_in_repo_sources_step_quality_planner",
+        "source": "in_repo_sources",
+        "target": "step_quality_planner",
+        "data": {
+          "label": "scan workspace",
+          "evidence": "src/simplicio_loop_quality/quality_planner.py:31"
+        }
+      },
+      {
+        "id": "edge_5_step_asolaria_quorum_out_asolaria_receipt",
+        "source": "step_asolaria_quorum",
+        "target": "out_asolaria_receipt",
+        "data": {
+          "label": "3-perspective quorum",
+          "evidence": "src/simplicio_loop_quality/asolaria_quorum.py:12"
+        }
+      },
+      {
+        "id": "edge_6_step_concurrency_perf_step_evidence_audit",
+        "source": "step_concurrency_perf",
+        "target": "step_evidence_audit",
+        "data": {
+          "label": "metrics receipts",
+          "evidence": "src/simplicio_loop_quality/evidence_audit.py:52"
+        }
+      },
+      {
+        "id": "edge_7_step_evidence_audit_step_asolaria_quorum",
+        "source": "step_evidence_audit",
+        "target": "step_asolaria_quorum",
+        "data": {
+          "label": "audited evidence",
+          "evidence": "src/simplicio_loop_quality/asolaria_quorum.py:12"
+        }
+      },
+      {
+        "id": "edge_8_step_evidence_audit_step_quality_gate",
+        "source": "step_evidence_audit",
+        "target": "step_quality_gate",
+        "data": {
+          "label": "admissible receipts",
+          "evidence": "src/simplicio_loop_quality/gate.py:301"
+        }
+      },
+      {
+        "id": "edge_9_step_fast_conformance_step_evidence_audit",
+        "source": "step_fast_conformance",
+        "target": "step_evidence_audit",
+        "data": {
+          "label": "engine parity",
+          "evidence": "src/simplicio_loop_quality/evidence_audit.py:52"
+        }
+      },
+      {
+        "id": "edge_10_step_mutation_testing_step_evidence_audit",
+        "source": "step_mutation_testing",
+        "target": "step_evidence_audit",
+        "data": {
+          "label": "mutation kills",
+          "evidence": "src/simplicio_loop_quality/evidence_audit.py:52"
+        }
+      },
+      {
+        "id": "edge_11_step_property_fuzz_step_evidence_audit",
+        "source": "step_property_fuzz",
+        "target": "step_evidence_audit",
+        "data": {
+          "label": "fuzz results",
+          "evidence": "src/simplicio_loop_quality/evidence_audit.py:52"
+        }
+      },
+      {
+        "id": "edge_12_step_quality_gate_out_evidence_manifest",
+        "source": "step_quality_gate",
+        "target": "out_evidence_manifest",
+        "data": {
+          "label": "evidence manifest",
+          "evidence": "src/simplicio_loop_quality/evidence.py:350"
+        }
+      },
+      {
+        "id": "edge_13_step_quality_gate_out_gate_verdict",
+        "source": "step_quality_gate",
+        "target": "out_gate_verdict",
+        "data": {
+          "label": "gate verdict (PASS/BLOCKED)",
+          "evidence": "src/simplicio_loop_quality/cli.py:257"
+        }
+      },
+      {
+        "id": "edge_14_step_quality_gate_step_release_candidate",
+        "source": "step_quality_gate",
+        "target": "step_release_candidate",
+        "data": {
+          "label": "passed candidate",
+          "evidence": "src/simplicio_loop_quality/release_candidate.py:19"
+        }
+      },
+      {
+        "id": "edge_15_step_quality_gate_step_remediation_findings",
+        "source": "step_quality_gate",
+        "target": "step_remediation_findings",
+        "data": {
+          "label": "blocked defects",
+          "evidence": "src/simplicio_loop_quality/remediation.py:32"
+        }
+      },
+      {
+        "id": "edge_16_step_quality_gate_store_journal_events",
+        "source": "step_quality_gate",
+        "target": "store_journal_events",
+        "data": {
+          "label": "append event",
+          "evidence": "src/simplicio_loop_quality/journal_events.py:13"
+        }
+      },
+      {
+        "id": "edge_17_step_quality_planner_out_quality_plan",
+        "source": "step_quality_planner",
+        "target": "out_quality_plan",
+        "data": {
+          "label": "emit plan",
+          "evidence": "src/simplicio_loop_quality/cli.py:208"
+        }
+      },
+      {
+        "id": "edge_18_step_quality_planner_step_risk_selection",
+        "source": "step_quality_planner",
+        "target": "step_risk_selection",
+        "data": {
+          "label": "planned lanes",
+          "evidence": "src/simplicio_loop_quality/risk_selection.py:101"
+        }
+      },
+      {
+        "id": "edge_19_step_release_candidate_out_rc_bundle",
+        "source": "step_release_candidate",
+        "target": "out_rc_bundle",
+        "data": {
+          "label": "attested provenance",
+          "evidence": "src/simplicio_loop_quality/release_candidate.py:19"
+        }
+      },
+      {
+        "id": "edge_20_step_remediation_findings_out_remediation_report",
+        "source": "step_remediation_findings",
+        "target": "out_remediation_report",
+        "data": {
+          "label": "recovery plan",
+          "evidence": "src/simplicio_loop_quality/remediation.py:32"
+        }
+      },
+      {
+        "id": "edge_21_step_risk_selection_step_stage_graph",
+        "source": "step_risk_selection",
+        "target": "step_stage_graph",
+        "data": {
+          "label": "selected suites",
+          "evidence": "src/simplicio_loop_quality/stage_graph.py:29"
+        }
+      },
+      {
+        "id": "edge_22_step_stage_graph_step_concurrency_perf",
+        "source": "step_stage_graph",
+        "target": "step_concurrency_perf",
+        "data": {
+          "label": "perf & reliability",
+          "evidence": "src/simplicio_loop_quality/concurrency_reliability.py:26"
+        }
+      },
+      {
+        "id": "edge_23_step_stage_graph_step_fast_conformance",
+        "source": "step_stage_graph",
+        "target": "step_fast_conformance",
+        "data": {
+          "label": "conformance stage",
+          "evidence": "src/simplicio_loop_quality/fast_conformance.py:40"
+        }
+      },
+      {
+        "id": "edge_24_step_stage_graph_step_mutation_testing",
+        "source": "step_stage_graph",
+        "target": "step_mutation_testing",
+        "data": {
+          "label": "mutation stage",
+          "evidence": "src/simplicio_loop_quality/mutation_quality.py:51"
+        }
+      },
+      {
+        "id": "edge_25_step_stage_graph_step_property_fuzz",
+        "source": "step_stage_graph",
+        "target": "step_property_fuzz",
+        "data": {
+          "label": "fuzz stage",
+          "evidence": "src/simplicio_loop_quality/property_fuzz.py:28"
+        }
+      },
+      {
+        "id": "edge_26_step_stage_graph_step_static_quality",
+        "source": "step_stage_graph",
+        "target": "step_static_quality",
+        "data": {
+          "label": "static stage",
+          "evidence": "src/simplicio_loop_quality/static_quality.py:90"
+        }
+      },
+      {
+        "id": "edge_27_step_stage_graph_step_supply_chain",
+        "source": "step_stage_graph",
+        "target": "step_supply_chain",
+        "data": {
+          "label": "supply chain stage",
+          "evidence": "src/simplicio_loop_quality/supply_chain.py:16"
+        }
+      },
+      {
+        "id": "edge_28_step_stage_graph_step_system_e2e",
+        "source": "step_stage_graph",
+        "target": "step_system_e2e",
+        "data": {
+          "label": "e2e stage",
+          "evidence": "src/simplicio_loop_quality/system_e2e.py:26"
+        }
+      },
+      {
+        "id": "edge_29_step_stage_graph_step_unit_testing",
+        "source": "step_stage_graph",
+        "target": "step_unit_testing",
+        "data": {
+          "label": "unit stage",
+          "evidence": "src/simplicio_loop_quality/unit_quality.py:85"
+        }
+      },
+      {
+        "id": "edge_30_step_static_quality_step_evidence_audit",
+        "source": "step_static_quality",
+        "target": "step_evidence_audit",
+        "data": {
+          "label": "static findings",
+          "evidence": "src/simplicio_loop_quality/evidence_audit.py:52"
+        }
+      },
+      {
+        "id": "edge_31_step_supply_chain_step_evidence_audit",
+        "source": "step_supply_chain",
+        "target": "step_evidence_audit",
+        "data": {
+          "label": "sbom digests",
+          "evidence": "src/simplicio_loop_quality/evidence_audit.py:52"
+        }
+      },
+      {
+        "id": "edge_32_step_system_e2e_step_evidence_audit",
+        "source": "step_system_e2e",
+        "target": "step_evidence_audit",
+        "data": {
+          "label": "scenario traces",
+          "evidence": "src/simplicio_loop_quality/evidence_audit.py:52"
+        }
+      },
+      {
+        "id": "edge_33_step_unit_testing_step_evidence_audit",
+        "source": "step_unit_testing",
+        "target": "step_evidence_audit",
+        "data": {
+          "label": "unit evidence",
+          "evidence": "src/simplicio_loop_quality/evidence_audit.py:52"
+        }
+      },
+      {
+        "id": "edge_34_step_waivers_evaluation_step_quality_gate",
+        "source": "step_waivers_evaluation",
+        "target": "step_quality_gate",
+        "data": {
+          "label": "approved waivers",
+          "evidence": "src/simplicio_loop_quality/waivers.py:58"
+        }
+      },
+      {
+        "id": "edge_35_store_contracts_step_negotiation",
+        "source": "store_contracts",
+        "target": "step_negotiation",
+        "data": {
+          "label": "contract matrix",
+          "evidence": "src/simplicio_loop_quality/contract_validation.py:21"
+        }
+      },
+      {
+        "id": "edge_36_store_contracts_step_quality_gate",
+        "source": "store_contracts",
+        "target": "step_quality_gate",
+        "data": {
+          "label": "strict policy schema",
+          "evidence": "src/simplicio_loop_quality/contract_validation.py:21"
+        }
+      }
+    ],
+    "viewport": {
+      "x": 0,
+      "y": 0,
+      "zoom": 0.8
+    }
+  }
+}

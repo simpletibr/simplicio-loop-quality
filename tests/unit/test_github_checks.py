@@ -15,6 +15,15 @@ class GitHubChecksTest(unittest.TestCase):
         self.assertEqual(result.issue_action, "keep-open")
         self.assertEqual(result.annotations[0]["level"], "warning")
 
+    def test_to_dict_and_projector(self):
+        from simplicio_loop_quality.github_checks import GitHubChecksProjector
+        proj = GitHubChecksProjector()
+        result = proj.project({"status": "PASS"})
+        d = result.to_dict()
+        self.assertEqual(d["schema"], "simplicio.quality-github-checks/v1")
+        self.assertEqual(d["conclusion"], "success")
+
+
 
 if __name__ == "__main__":
     unittest.main()

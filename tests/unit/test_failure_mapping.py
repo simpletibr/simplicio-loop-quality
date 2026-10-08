@@ -14,6 +14,13 @@ class FailureMappingTest(unittest.TestCase):
         self.assertFalse(map_failure({"kind": "permission"}, attempts_remaining=2).retry_hint)
         self.assertEqual(map_failure({"kind": "permission"}, attempts_remaining=2).status, "FAIL")
 
+    def test_to_dict(self):
+        decision = map_failure({"kind": "timeout"}, attempts_remaining=1)
+        d = decision.to_dict()
+        self.assertEqual(d["schema"], "simplicio.quality-failure-mapping/v1")
+        self.assertEqual(d["reason_code"], "TIMEOUT")
+
+
 
 if __name__ == "__main__":
     unittest.main()
