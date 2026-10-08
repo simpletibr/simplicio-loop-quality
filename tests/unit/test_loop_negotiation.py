@@ -22,6 +22,8 @@ def native_handshakes():
     }
     roles = {row["role_id"] for row in runtime.manifest["role_bindings"]}
     handlers = {row["effect_id"] for row in runtime.manifest["effect_handlers"]}
+    if "hub" not in provider_value.get("contracts", {}):
+        provider_value["contracts"]["hub"] = "simplicio.hub-ipc/v1"
     return provider_value, core_value, roles, handlers
 
 

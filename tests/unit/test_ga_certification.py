@@ -40,6 +40,49 @@ class GaCertificationTest(unittest.TestCase):
         self.assertEqual(result["status"], "FAIL")
         self.assertIn("GA_CASE_MISSING", result["reason_codes"])
 
+    def test_empty_profiles_is_blocked(self):
+        matrix = build_ga_matrix(())
+        self.assertEqual(matrix["status"], "BLOCKED")
+        self.assertIn("PROFILES_MISSING", matrix["reason_codes"])
+
+    def test_mismatches_and_coverage_below_threshold(self):
+        results = [
+            {
+                "profile": "python",
+                "lane": "unit",
+                "status": "FAIL",
+                "source_sha": "wrong-sha",
+                "evidence_refs": [],
+            },
+            {
+                "profile": "python",
+                "lane": "unit",
+                "status": "PASS",
+                "source_sha": "source",
+                "evidence_refs": ["ref"],
+            },
+            {
+                "profile": "python",
+                "lane": "changed_branch_coverage",
+                "status": "PASS",
+                "source_sha": "source",
+                "evidence_refs": ["ref"],
+                "percent": 85.0,
+            },
+        ]
+        verdict = evaluate_ga_results(
+            results,
+            expected_cases=(("python", "unit"), ("python", "changed_branch_coverage")),
+            source_sha="source",
+        )
+        self.assertEqual(verdict["status"], "BLOCKED")
+        self.assertIn("DUPLICATE_CASE", verdict["reason_codes"])
+        self.assertIn("SOURCE_BINDING_MISMATCH", verdict["reason_codes"])
+        self.assertIn("EVIDENCE_MISSING", verdict["reason_codes"])
+        self.assertIn("LANE_NOT_PASS", verdict["reason_codes"])
+        self.assertIn("CHANGED_BRANCH_COVERAGE_BELOW_90", verdict["reason_codes"])
+
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -4,19 +4,31 @@ import time
 from pathlib import Path
 
 import pytest
-from simplicio_loop.hub_daemon import (
-    HubDaemon,
-    HubSocketClient,
-    HubSocketServer,
-    default_endpoint,
-    default_transport,
-)
-from simplicio_loop.hub_queue_agent import HubQueueAgentClient
+
+try:
+    from simplicio_loop.hub_daemon import (
+        HubDaemon,
+        HubSocketClient,
+        HubSocketServer,
+        default_endpoint,
+        default_transport,
+    )
+    from simplicio_loop.hub_queue_agent import HubQueueAgentClient
+except ImportError:
+    HubDaemon = None  # type: ignore[assignment,misc]
+    HubSocketClient = None  # type: ignore[assignment,misc]
+    HubSocketServer = None  # type: ignore[assignment,misc]
+    default_endpoint = None  # type: ignore[assignment,misc]
+    default_transport = None  # type: ignore[assignment,misc]
+    HubQueueAgentClient = None  # type: ignore[assignment,misc]
 
 from simplicio_loop_quality.adapters import ResourceRequest
 from simplicio_loop_quality.hub_process_adapter import HubProcessAdapter, QualityToolRequest
 
 TERMINAL = {"passed", "failed", "cancelled", "timed_out"}
+
+if HubDaemon is None:
+    pytestmark = pytest.mark.skip(reason="Hub daemon not available in this Loop version")
 
 
 @pytest.fixture

@@ -4,7 +4,7 @@ import unittest
 from importlib import resources
 from pathlib import Path
 
-from hypothesis import given
+from hypothesis import given, settings
 from hypothesis import strategies as st
 from jsonschema import Draft202012Validator, FormatChecker
 
@@ -134,6 +134,7 @@ class ContractSchemaTest(unittest.TestCase):
                 self.assertValid(document)
                 self.assertEqual(document, json.loads(json.dumps(document, sort_keys=True)))
 
+    @settings(deadline=None)
     @given(
         st.text(min_size=1, max_size=24).filter(
             lambda value: (

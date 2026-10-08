@@ -45,6 +45,41 @@ class EvoBenchmarkTest(unittest.TestCase):
         self.assertEqual(result["status"], "BLOCKED")
         self.assertIn("TOKENS_UNAVAILABLE_REASON_MISSING", result["reason_codes"])
 
+    def test_invalid_dataset(self):
+        result = validate_dataset([])
+        self.assertEqual(result["status"], "BLOCKED")
+        self.assertIn("TASK_COUNT_BELOW_12", result["reason_codes"])
+        self.assertIn("REPOSITORY_COUNT_BELOW_3", result["reason_codes"])
+        self.assertIn("TASK_CLASS_COUNT_BELOW_3", result["reason_codes"])
+
+        bad_tasks = [{"task_id": ""} for _ in range(12)]
+        result2 = validate_dataset(bad_tasks)
+        self.assertIn("TASK_TASK_ID_MISSING", result2["reason_codes"])
+
+    def test_benchmark_run_edge_cases(self):
+        bad_run = {
+            "scenario": "INVALID_SCENARIO",
+            "repetitions": 5,
+            "raw_samples": [],
+            "source_sha": "",
+            "receipt_refs": [],
+            "metrics": "not-a-map",
+        }
+        res = evaluate_benchmark_run(bad_run)
+        self.assertEqual(res["status"], "BLOCKED")
+        self.assertIn("SCENARIO_INVALID", res["reason_codes"])
+        self.assertIn("REPETITIONS_BELOW_10", res["reason_codes"])
+        self.assertIn("RAW_SAMPLES_MISSING", res["reason_codes"])
+        self.assertIn("SOURCE_SHA_MISSING", res["reason_codes"])
+        self.assertIn("RECEIPTS_MISSING", res["reason_codes"])
+        self.assertIn("METRICS_MISSING", res["reason_codes"])
+
+        r2 = run()
+        r2["metrics"]["tokens"] = -5
+        res2 = evaluate_benchmark_run(r2)
+        self.assertIn("TOKENS_INVALID", res2["reason_codes"])
+
+
 
 if __name__ == "__main__":
     unittest.main()

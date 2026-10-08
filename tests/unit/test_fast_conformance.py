@@ -47,6 +47,36 @@ class FastConformanceTest(unittest.TestCase):
         self.assertEqual(verdict["status"], "FAIL")
         self.assertIn("RUST_FALLBACK_USED", verdict["reason_codes"])
 
+    def test_conformance_edge_cases(self):
+        case = ("rust", "full", "conformance", 1)
+        v1 = result(case)
+        v1["python_loaded"] = True
+        v1["shadow_duplicates"] = 2
+        v1["rollback_exercised"] = False
+        v1["status"] = "FAIL"
+        v1["source_sha"] = "wrong-sha"
+        v1["policy_hash"] = "wrong-policy"
+        v1["evidence_refs"] = []
+
+        v2 = result(case)  # Duplicate case
+        verdict = evaluate_conformance(
+            [v1, v2],
+            expected_cases=(case, ("off", "full", "conformance", 1)),
+            source_sha="source",
+            policy_hash="policy",
+        )
+        self.assertEqual(verdict["status"], "BLOCKED")
+        self.assertIn("DUPLICATE_CASE", verdict["reason_codes"])
+        self.assertIn("SOURCE_BINDING_MISMATCH", verdict["reason_codes"])
+        self.assertIn("POLICY_BINDING_MISMATCH", verdict["reason_codes"])
+        self.assertIn("EVIDENCE_MISSING", verdict["reason_codes"])
+        self.assertIn("RUST_LOADED_PYTHON", verdict["reason_codes"])
+        self.assertIn("SHADOW_DUPLICATE_EFFECT", verdict["reason_codes"])
+        self.assertIn("ROLLBACK_NOT_EXERCISED", verdict["reason_codes"])
+        self.assertIn("CASE_NOT_PASS", verdict["reason_codes"])
+        self.assertIn("CONFORMANCE_CASE_MISSING", verdict["reason_codes"])
+
+
 
 if __name__ == "__main__":
     unittest.main()

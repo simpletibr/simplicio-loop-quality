@@ -135,6 +135,35 @@ Applicability is explicit: an inapplicable lane needs a technical reason and ind
 Skipped, flaky, stale, missing or unverifiable evidence never becomes `PASS`. Missing metrics are
 `null` with a machine-readable reason, never zero or an estimate.
 
+## 🗺️ Declarative flow (simplicio.flow/v1)
+
+<p align="center">
+  <img src="docs/flow/simplicio-loop-quality.svg" alt="Simplicio Loop Quality Flow (Entradas -> Passos -> Saídas)" width="920" />
+</p>
+
+The product flow conforms to `simplicio.flow/v1` and maps the complete processing lifecycle:
+inputs (CLI, extension provider, policy, repository workspace, receipts), stages across the 36 quality lanes, persistent contract/journal stores, and definitive gate verdicts/remediation outputs.
+
+Artifacts in `docs/flow/`:
+- `docs/flow/simplicio-loop-quality.flow.json`: Single declarative source of truth.
+- `docs/flow/simplicio-loop-quality.mmd`: Derived Mermaid diagram.
+- `docs/flow/simplicio-loop-quality.svg` / `.png`: Rendered visual charts.
+- `docs/flow/langflow/simplicio-loop-quality.langflow.json`: Importable flow in Langflow 1.12.0.
+
+### Regenerate flow
+
+```bash
+# Regenerate flow.json, mmd, svg, png and langflow artifacts:
+make flow
+# or:
+python scripts/generate_flow.py
+
+# Validate drift between code and flow specification:
+make check-drift
+# or:
+python scripts/generate_flow.py --check-drift
+```
+
 ## ▶️ Run it
 
 ```bash
